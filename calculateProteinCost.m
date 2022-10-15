@@ -1,7 +1,7 @@
 function result = calculateProteinCost(ecModel,list)
 % DESCRIPTION:
 % Calculate protein costs for individual reactions in ecModel
-% Note that the caluclate protein cost is per flux (mol/gCDW/h)
+% Note that the caluclated protein cost is per flux (mol/gCDW/h)
 %
 % INPUTS:
 % model: an ecModel structure in GECKO2 version
