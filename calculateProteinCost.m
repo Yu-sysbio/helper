@@ -50,19 +50,8 @@ for i = 1:length(list)
         [~, b2] = ismember(cellfun(@(x) x(6:end),enzymes_tmp,'UniformOutput',false),ecModel.enzymes);
         mws_tmp = ecModel.MWs(b2);
         result.costs(i) = sum(coeffs_tmp.*mws_tmp)*1000; % protein cost = mw/kcat
+    else
+        warning(['The reaction ' list{i} ' is not in the model or has no enzyme constraint']);
     end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
