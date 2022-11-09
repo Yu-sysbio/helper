@@ -15,8 +15,8 @@ function result = calculateProteinCost(ecModel,list)
 %         * rxns - a list of reactions
 %         * costs - calculated protein costs of the corresponding reactions
 %                   in the unit gProtein/gCDW per flux (mol/gCDW/h)
-%                   NaN means protein cost cannot be calculate due to it
-%                   absence or missing kcat and mw data
+%                   NaN means that protein cost cannot be calculated due to 
+%                   either its absence or lack of kcat and mw data
 %
 % REFERENCES:
 % GECKO2:
@@ -49,7 +49,7 @@ for i = 1:length(list)
         coeffs_tmp = -full(ecModel.S(b1,rxnIdx_tmp));
         [~, b2] = ismember(cellfun(@(x) x(6:end),enzymes_tmp,'UniformOutput',false),ecModel.enzymes);
         mws_tmp = ecModel.MWs(b2);
-        result.costs(i) = sum(coeffs_tmp.*mws_tmp)*1000; % protein cost = mw/kcat
+        result.costs(i) = sum(coeffs_tmp.*mws_tmp)*1000; % protein cost = mw/kcat (note that unit of ecModel.MWs is g/mmol)
     else
         warning(['The reaction ' list{i} ' is not in the model or has no enzyme constraint']);
     end
